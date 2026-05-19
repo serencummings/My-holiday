@@ -686,12 +686,16 @@ function handleRSVP(answer) {
   const msg = document.getElementById('rsvp-msg');
   const btns = document.querySelectorAll('.rbtn');
   if (answer === 'yes') {
-    msg.textContent = "🎉 You said yes! Opening Mail to let Seren know... ♡";
-    msg.className = 'rsvp-msg rsvp-yes-msg show';
     btns.forEach(b => b.disabled = true);
     const subject = encodeURIComponent('YES to Annecy! ✈♡');
     const body = encodeURIComponent("Seren,\n\nI accept your Annecy proposal. Let's go.\n\nLove,\nCallum ♡");
-    setTimeout(() => { window.location.href = `mailto:${SEREN_EMAIL}?subject=${subject}&body=${body}`; }, 700);
+    const a = document.createElement('a');
+    a.href = `mailto:${SEREN_EMAIL}?subject=${subject}&body=${body}`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    msg.textContent = "🎉 You said yes! Opening Mail to let Seren know... ♡";
+    msg.className = 'rsvp-msg rsvp-yes-msg show';
   } else {
     msg.textContent = "💔 Wrong answer, Callum. Try again. (I am not taking no.)";
     msg.className = 'rsvp-msg rsvp-no-msg show';
@@ -706,7 +710,11 @@ function submitQA() {
   if (!msg) { document.getElementById('qa-message').focus(); return; }
   const s = encodeURIComponent(`Annecy itinerary: ${subj}`);
   const b = encodeURIComponent(`From: ${name}\n\n${msg}`);
-  window.location.href = `mailto:${SEREN_EMAIL}?subject=${s}&body=${b}`;
+  const a = document.createElement('a');
+  a.href = `mailto:${SEREN_EMAIL}?subject=${s}&body=${b}`;
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
   document.getElementById('qa-form').style.display = 'none';
   document.getElementById('qa-thanks').classList.add('show');
 }
