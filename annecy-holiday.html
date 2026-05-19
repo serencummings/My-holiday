@@ -627,18 +627,8 @@ body{font-family:'DM Sans',sans-serif;background:var(--sand);color:var(--ink);ov
   <div class="qa-inner">
     <p class="section-label">Questions &amp; Amendments</p>
     <h2>Got <em>thoughts?</em></h2>
-    <p class="lede">Want to tweak something, swap a day around, or ask me anything? Fill it in and I'll get an email. 💬</p>
-    <div class="qa-form" id="qa-form">
-      <div class="qa-row">
-        <input class="qa-input" type="text" placeholder="Your name" id="qa-name" value="Callum" oninput="updateMailto()" onchange="updateMailto()">
-        <input class="qa-input" type="text" placeholder="Subject (e.g. Too expensive?)" id="qa-subject" oninput="updateMailto()" onchange="updateMailto()">
-      </div>
-      <textarea class="qa-textarea" placeholder="Your question, suggestion or amendment..." id="qa-message" oninput="updateMailto()" onchange="updateMailto()"></textarea>
-      <a class="qa-submit" id="qa-send-link" href="mailto:seren.cummings@me.com?subject=Annecy%20itinerary%3A%20Itinerary%20question&body=From%3A%20Callum%0A%0A">Send to Seren →</a>
-    </div>
-    <div class="qa-thanks" id="qa-thanks">
-      Noted, Callum. Seren will get back to you. 📩 ♡
-    </div>
+    <p class="lede">Any questions, feedback or amendments — just tap below and it'll open Mail. 💬</p>
+    <a class="qa-submit" href="mailto:seren.cummings@me.com?subject=Annecy%20Holiday%20%E2%80%94%20Feedback%20/%20Question">Send Feedback or Questions →</a>
   </div>
 </div>
 
@@ -661,7 +651,6 @@ document.querySelectorAll('.day').forEach((el, i) => {
   el.style.transitionDelay = (i * 0.04) + 's';
   observer.observe(el);
 });
-updateMailto();
 
 function handleRSVP(answer) {
   const msg = document.getElementById('rsvp-msg');
@@ -684,20 +673,7 @@ function handleRSVP(answer) {
   }
 }
 
-function updateMailto() {
-  const name = document.getElementById('qa-name').value.trim() || 'Callum';
-  const subj = document.getElementById('qa-subject').value.trim() || 'Itinerary question';
-  const msg  = document.getElementById('qa-message').value.trim();
-  const s = encodeURIComponent('Annecy itinerary: ' + subj);
-  const b = encodeURIComponent('From: ' + name + '\n\n' + msg);
-  document.getElementById('qa-send-link').setAttribute('href', 'mailto:' + SEREN_EMAIL + '?subject=' + s + '&body=' + b);
-}
-document.getElementById('qa-send-link').addEventListener('click', function() {
-  setTimeout(function() {
-    document.getElementById('qa-form').style.display = 'none';
-    document.getElementById('qa-thanks').classList.add('show');
-  }, 400);
-});
+
 </script>
 </body>
 </html>
