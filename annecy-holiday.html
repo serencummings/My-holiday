@@ -630,10 +630,10 @@ body{font-family:'DM Sans',sans-serif;background:var(--sand);color:var(--ink);ov
     <p class="lede">Want to tweak something, swap a day around, or ask me anything? Fill it in and I'll get an email. 💬</p>
     <div class="qa-form" id="qa-form">
       <div class="qa-row">
-        <input class="qa-input" type="text" placeholder="Your name" id="qa-name" value="Callum" oninput="updateMailto()">
-        <input class="qa-input" type="text" placeholder="Subject (e.g. Too expensive?)" id="qa-subject" oninput="updateMailto()">
+        <input class="qa-input" type="text" placeholder="Your name" id="qa-name" value="Callum" oninput="updateMailto()" onchange="updateMailto()">
+        <input class="qa-input" type="text" placeholder="Subject (e.g. Too expensive?)" id="qa-subject" oninput="updateMailto()" onchange="updateMailto()">
       </div>
-      <textarea class="qa-textarea" placeholder="Your question, suggestion or amendment..." id="qa-message" oninput="updateMailto()"></textarea>
+      <textarea class="qa-textarea" placeholder="Your question, suggestion or amendment..." id="qa-message" oninput="updateMailto()" onchange="updateMailto()"></textarea>
       <a class="qa-submit" id="qa-send-link" href="mailto:seren.cummings@me.com?subject=Annecy%20itinerary%3A%20Itinerary%20question&body=From%3A%20Callum%0A%0A" onclick="return handleSend()">Send to Seren →</a>
     </div>
     <div class="qa-thanks" id="qa-thanks">
@@ -661,6 +661,7 @@ document.querySelectorAll('.day').forEach((el, i) => {
   el.style.transitionDelay = (i * 0.04) + 's';
   observer.observe(el);
 });
+updateMailto();
 
 function handleRSVP(answer) {
   const msg = document.getElementById('rsvp-msg');
@@ -694,6 +695,7 @@ function updateMailto() {
 function handleSend() {
   const msg = document.getElementById('qa-message').value.trim();
   if (!msg) { document.getElementById('qa-message').focus(); return false; }
+  updateMailto();
   setTimeout(function() {
     document.getElementById('qa-form').style.display = 'none';
     document.getElementById('qa-thanks').classList.add('show');
