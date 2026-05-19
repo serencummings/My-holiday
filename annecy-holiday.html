@@ -166,6 +166,10 @@ body{font-family:'DM Sans',sans-serif;background:var(--sand);color:var(--ink);ov
 .footer::before{content:'ANNECY';position:absolute;font-family:'Playfair Display',serif;font-size:clamp(5rem,18vw,14rem);font-weight:700;color:rgba(255,255,255,.04);top:50%;left:50%;transform:translate(-50%,-50%);white-space:nowrap;pointer-events:none;letter-spacing:-.02em}
 .footer-title{font-family:'Playfair Display',serif;font-size:clamp(1.6rem,3.5vw,2.4rem);font-style:italic;color:#fff;margin-bottom:10px;position:relative}
 .footer-sub{font-size:.78rem;color:rgba(255,255,255,.45);letter-spacing:.08em;position:relative}
+
+.day-icon-wrap{display:flex;align-items:center;justify-content:center;width:100%;height:100%}
+.mood-tile-icon{display:flex;align-items:center;justify-content:center;width:100%;height:100%;padding:16px 0}
+.stay-hero-icon{display:flex;align-items:center;justify-content:center;width:100%;height:100%}
 </style>
 </head>
 <body>
@@ -185,9 +189,62 @@ body{font-family:'DM Sans',sans-serif;background:var(--sand);color:var(--ink);ov
 </section>
 
 <div class="mood">
-  <div class="mood-tile"><div class="cap">Lake Annecy — turquoise &amp; impossibly clear</div></div>
-  <div class="mood-tile"><div class="cap">Talloires — the prettiest village on the lake</div></div>
-  <div class="mood-tile"><div class="cap">The Alps, all around us</div></div>
+  <div class="mood-tile"><div class="mood-tile-icon">
+  <svg viewBox="0 0 320 140" xmlns="http://www.w3.org/2000/svg" style="width:220px;height:auto;opacity:0.85">
+  <!-- mountains -->
+  <path d="M0 90 L40 50 L75 75 L110 38 L150 70 L185 42 L225 68 L260 45 L320 62 L320 90Z" fill="rgba(74,143,168,0.22)" stroke="#4a8fa8" stroke-width="1.2"/>
+  <path d="M102 50 L110 38 L118 50 Q114 44 110 40 Q106 44 102 50Z" fill="rgba(212,234,242,0.45)"/>
+  <!-- lake surface -->
+  <rect x="0" y="90" width="320" height="50" fill="rgba(74,143,168,0.25)"/>
+  <!-- gentle waves -->
+  <path d="M0 100 Q40 95 80 100 Q120 105 160 100 Q200 95 240 100 Q280 105 320 100" stroke="#d4eaf2" stroke-width="1.8" fill="none"/>
+  <path d="M0 112 Q40 107 80 112 Q120 117 160 112 Q200 107 240 112 Q280 117 320 112" stroke="#4a8fa8" stroke-width="1.4" fill="none" opacity="0.7"/>
+  <path d="M0 125 Q40 120 80 125 Q120 130 160 125 Q200 120 240 125 Q280 130 320 125" stroke="#4a8fa8" stroke-width="1.4" fill="none" opacity="0.7" opacity="0.4"/>
+  <!-- sun reflection on water -->
+  <path d="M145 90 L155 90 L162 105 L148 112 L138 105 Z" fill="rgba(201,168,76,0.15)"/>
+  </svg>
+</div><div class="cap">Lake Annecy — turquoise &amp; impossibly clear</div></div>
+  <div class="mood-tile"><div class="mood-tile-icon">
+  <svg viewBox="0 0 320 140" xmlns="http://www.w3.org/2000/svg" style="width:220px;height:auto;opacity:0.85">
+  <!-- lake behind -->
+  <rect x="0" y="85" width="320" height="55" fill="rgba(74,143,168,0.2)"/>
+  <path d="M0 85 Q80 80 160 85 Q240 90 320 85" stroke="#4a8fa8" stroke-width="1.4" fill="none" opacity="0.7"/>
+  <!-- Alps far -->
+  <path d="M0 85 L35 55 L65 72 L95 45 L130 65 L160 40 L195 62 L230 48 L270 65 L320 55 L320 85Z" fill="rgba(44,100,120,0.3)" stroke="none"/>
+  <!-- village buildings -->
+  <rect x="65" y="60" width="22" height="25" fill="rgba(74,143,168,0.22)" stroke="#4a8fa8" stroke-width="1.2"/>
+  <path d="M63 60 L76 48 L89 60Z" fill="rgba(74,143,168,0.22)" stroke="#4a8fa8" stroke-width="1.2"/>
+  <rect x="95" y="65" width="18" height="20" fill="rgba(74,143,168,0.22)" stroke="#4a8fa8" stroke-width="1.2"/>
+  <path d="M93 65 L104 54 L115 65Z" fill="rgba(74,143,168,0.22)" stroke="#4a8fa8" stroke-width="1.2"/>
+  <rect x="180" y="62" width="20" height="23" fill="rgba(74,143,168,0.22)" stroke="#4a8fa8" stroke-width="1.2"/>
+  <path d="M178 62 L190 50 L202 62Z" fill="rgba(74,143,168,0.22)" stroke="#4a8fa8" stroke-width="1.2"/>
+  <rect x="208" y="65" width="16" height="20" fill="rgba(74,143,168,0.22)" stroke="#4a8fa8" stroke-width="1.2"/>
+  <path d="M206 65 L216 55 L226 65Z" fill="rgba(74,143,168,0.22)" stroke="#4a8fa8" stroke-width="1.2"/>
+  <!-- church steeple -->
+  <rect x="140" y="55" width="14" height="30" fill="rgba(74,143,168,0.22)" stroke="#4a8fa8" stroke-width="1.2"/>
+  <path d="M138 55 L147 38 L156 55Z" fill="rgba(74,143,168,0.5)" stroke="#4a8fa8" stroke-width="1.2"/>
+  <line x1="147" y1="30" x2="147" y2="38" stroke="#d4eaf2" stroke-width="1.5"/>
+  <!-- water reflection -->
+  <path d="M0 95 Q80 90 160 95 Q240 100 320 95" stroke="#4a8fa8" stroke-width="1.4" fill="none" opacity="0.7" opacity="0.4"/>
+  </svg>
+</div><div class="cap">Talloires — the prettiest village on the lake</div></div>
+  <div class="mood-tile"><div class="mood-tile-icon">
+  <svg viewBox="0 0 320 140" xmlns="http://www.w3.org/2000/svg" style="width:220px;height:auto;opacity:0.85">
+  <!-- sky gradient hint -->
+  <path d="M0 140 L0 60 Q160 30 320 60 L320 140Z" fill="rgba(74,143,168,0.08)"/>
+  <!-- far peaks (lighter) -->
+  <path d="M0 110 L30 75 L55 92 L80 62 L110 82 L135 58 L162 78 L185 55 L215 74 L240 52 L270 70 L320 58 L320 110Z" fill="rgba(44,100,120,0.35)" stroke="none"/>
+  <!-- near peaks (stronger) -->
+  <path d="M0 120 L40 72 L68 95 L100 52 L135 80 L165 48 L200 78 L235 55 L270 80 L320 65 L320 120Z" fill="rgba(74,143,168,0.22)" stroke="#4a8fa8" stroke-width="1.2"/>
+  <!-- snow caps -->
+  <path d="M92 65 L100 52 L108 65 Q104 58 100 54 Q96 58 92 65Z" fill="rgba(212,234,242,0.55)"/>
+  <path d="M157 61 L165 48 L173 61 Q169 54 165 50 Q161 54 157 61Z" fill="rgba(212,234,242,0.55)"/>
+  <path d="M232 67 L240 52 L248 67 Q244 60 240 56 Q236 60 232 67Z" fill="rgba(212,234,242,0.55)"/>
+  <path d="M34 85 L40 72 L46 85 Q43 79 40 75 Q37 79 34 85Z" fill="rgba(212,234,242,0.45)"/>
+  <!-- ground / valley -->
+  <path d="M0 120 Q80 108 160 118 Q240 128 320 115 L320 140 L0 140Z" fill="rgba(26,60,78,0.5)"/>
+  </svg>
+</div><div class="cap">The Alps, all around us</div></div>
 </div>
 
 <section class="cost">
@@ -236,7 +293,30 @@ body{font-family:'DM Sans',sans-serif;background:var(--sand);color:var(--ink);ov
   <h2 class="section-title">The Duplex — Villa 225</h2>
 
   <div class="stay-hero">
-    
+    <div class="stay-hero-icon"><svg viewBox="0 0 320 200" xmlns="http://www.w3.org/2000/svg" style="width:220px;height:auto;opacity:0.85">
+  <!-- mountains -->
+  <path d="M0 130 L45 75 L80 105 L120 55 L160 90 L200 60 L245 88 L280 65 L320 80 L320 130Z" fill="rgba(74,143,168,0.22)" stroke="#4a8fa8" stroke-width="1.2"/>
+  <path d="M112 68 L120 55 L128 68 Q124 61 120 57 Q116 61 112 68Z" fill="rgba(212,234,242,0.5)"/>
+  <!-- villa building -->
+  <rect x="95" y="120" width="130" height="55" fill="rgba(74,143,168,0.25)" stroke="#d4eaf2" stroke-width="1.8"/>
+  <!-- roof -->
+  <path d="M88 120 L160 95 L232 120Z" fill="rgba(44,100,120,0.45)" stroke="#d4eaf2" stroke-width="1.5"/>
+  <!-- windows -->
+  <rect x="108" y="132" width="16" height="14" fill="rgba(201,168,76,0.2)" stroke="#d4eaf2" stroke-width="1.2"/>
+  <rect x="134" y="132" width="16" height="14" fill="rgba(201,168,76,0.2)" stroke="#d4eaf2" stroke-width="1.2"/>
+  <rect x="160" y="132" width="16" height="14" fill="rgba(201,168,76,0.2)" stroke="#d4eaf2" stroke-width="1.2"/>
+  <rect x="186" y="132" width="16" height="14" fill="rgba(201,168,76,0.2)" stroke="#d4eaf2" stroke-width="1.2"/>
+  <!-- door -->
+  <path d="M148 175 L148 155 Q160 150 172 155 L172 175Z" fill="rgba(26,37,48,0.6)" stroke="#d4eaf2" stroke-width="1.2"/>
+  <!-- pool -->
+  <rect x="60" y="155" width="80" height="30" rx="4" fill="rgba(74,143,168,0.35)" stroke="#4a8fa8" stroke-width="1.8"/>
+  <!-- pool ripple -->
+  <path d="M68 165 Q80 161 92 165 Q104 169 116 165 Q128 161 132 165" stroke="#d4eaf2" stroke-width="1" fill="none" opacity="0.6"/>
+  <path d="M68 174 Q80 170 92 174 Q104 178 116 174 Q128 170 132 174" stroke="#d4eaf2" stroke-width="0.8" fill="none" opacity="0.4"/>
+  <!-- terrace / steps -->
+  <path d="M225 175 L245 175 L245 185 L225 185Z" fill="rgba(74,143,168,0.2)" stroke="#4a8fa8" stroke-width="1"/>
+  <path d="M220 185 L250 185 L250 195 L220 195Z" fill="rgba(74,143,168,0.2)" stroke="#4a8fa8" stroke-width="1"/>
+</svg></div>
     <div class="stay-hero-ov"></div>
     <div class="stay-hero-txt">
       <h3>Private heated pool · Mountain terrace</h3>
@@ -299,7 +379,28 @@ body{font-family:'DM Sans',sans-serif;background:var(--sand);color:var(--ink);ov
         </div>
       </div>
       <div class="day-right">
-        <div class="day-photo"><div class="cap">Annecy Old Town — our first evening walk</div></div>
+        <div class="day-photo"><div class="day-icon-wrap"><svg viewBox="0 0 280 180" xmlns="http://www.w3.org/2000/svg" style="width:180px;height:auto;opacity:0.85">
+  <!-- water ripples -->
+  <path d="M20 150 Q60 145 100 150 Q140 155 180 150 Q220 145 260 150" stroke="#4a8fa8" stroke-width="1.4" fill="none" opacity="0.7"/>
+  <path d="M30 160 Q70 155 110 160 Q150 165 190 160 Q230 155 260 160" stroke="#4a8fa8" stroke-width="1.4" fill="none" opacity="0.7" opacity="0.4"/>
+  <!-- island building -->
+  <rect x="110" y="100" width="60" height="50" fill="rgba(74,143,168,0.22)" stroke="#4a8fa8" stroke-width="1.2"/>
+  <path d="M105 100 L140 72 L175 100Z" fill="rgba(74,143,168,0.22)" stroke="#4a8fa8" stroke-width="1.2"/>
+  <!-- tower -->
+  <rect x="125" y="78" width="14" height="22" fill="rgba(74,143,168,0.22)" stroke="#4a8fa8" stroke-width="1.2"/>
+  <path d="M123 78 L132 65 L141 78Z" fill="rgba(74,143,168,0.22)" stroke="#4a8fa8" stroke-width="1.2"/>
+  <!-- arched bridge left -->
+  <path d="M50 130 Q80 105 110 130" stroke="#d4eaf2" stroke-width="1.8" fill="none"/>
+  <line x1="50" y1="130" x2="50" y2="150" stroke="#d4eaf2" stroke-width="1.8" fill="none"/>
+  <line x1="110" y1="130" x2="110" y2="150" stroke="#d4eaf2" stroke-width="1.8" fill="none"/>
+  <!-- arched bridge right -->
+  <path d="M170 130 Q200 105 230 130" stroke="#d4eaf2" stroke-width="1.8" fill="none"/>
+  <line x1="170" y1="130" x2="170" y2="150" stroke="#d4eaf2" stroke-width="1.8" fill="none"/>
+  <line x1="230" y1="130" x2="230" y2="150" stroke="#d4eaf2" stroke-width="1.8" fill="none"/>
+  <!-- windows -->
+  <rect x="120" y="110" width="8" height="10" stroke="#d4eaf2" stroke-width="1" fill="rgba(212,234,242,0.1)"/>
+  <rect x="152" y="110" width="8" height="10" stroke="#d4eaf2" stroke-width="1" fill="rgba(212,234,242,0.1)"/>
+</svg></div><div class="cap">Annecy Old Town — our first evening walk</div></div>
       </div>
     </div>
   </div>
@@ -319,7 +420,26 @@ body{font-family:'DM Sans',sans-serif;background:var(--sand);color:var(--ink);ov
         </div>
       </div>
       <div class="day-right">
-        <div class="day-photo"><div class="cap">Lake Annecy — turquoise and impossibly clear</div></div>
+        <div class="day-photo"><div class="day-icon-wrap"><svg viewBox="0 0 280 180" xmlns="http://www.w3.org/2000/svg" style="width:180px;height:auto;opacity:0.85">
+  <!-- sun -->
+  <circle cx="140" cy="62" r="28" fill="rgba(201,168,76,0.2)" stroke="#c9a84c" stroke-width="1.8"/>
+  <circle cx="140" cy="62" r="18" fill="rgba(201,168,76,0.3)" stroke="#c9a84c" stroke-width="1.5"/>
+  <!-- sun rays -->
+  <line x1="140" y1="20" x2="140" y2="28" stroke="#c9a84c" stroke-width="1.5" opacity="0.7"/>
+  <line x1="108" y1="30" x2="113" y2="37" stroke="#c9a84c" stroke-width="1.5" opacity="0.7"/>
+  <line x1="172" y1="30" x2="167" y2="37" stroke="#c9a84c" stroke-width="1.5" opacity="0.7"/>
+  <line x1="96" y1="62" x2="104" y2="62" stroke="#c9a84c" stroke-width="1.5" opacity="0.7"/>
+  <line x1="184" y1="62" x2="176" y2="62" stroke="#c9a84c" stroke-width="1.5" opacity="0.7"/>
+  <!-- mountain silhouette -->
+  <path d="M0 120 L50 75 L90 100 L130 55 L170 85 L210 60 L260 95 L280 90 L280 180 L0 180Z" fill="rgba(44,100,120,0.3)"/>
+  <!-- water waves -->
+  <path d="M0 140 Q35 134 70 140 Q105 146 140 140 Q175 134 210 140 Q245 146 280 140" stroke="#d4eaf2" stroke-width="1.8" fill="none"/>
+  <path d="M0 155 Q35 149 70 155 Q105 161 140 155 Q175 149 210 155 Q245 161 280 155" stroke="#4a8fa8" stroke-width="1.4" fill="none" opacity="0.7"/>
+  <!-- kayak -->
+  <path d="M90 138 Q140 128 190 138 Q140 148 90 138Z" fill="rgba(212,234,242,0.3)" stroke="#d4eaf2" stroke-width="1.5"/>
+  <line x1="140" y1="128" x2="140" y2="108" stroke="#d4eaf2" stroke-width="1.5"/>
+  <path d="M128 108 L140 102 L152 108" stroke="#d4eaf2" stroke-width="1.4" fill="none"/>
+</svg></div><div class="cap">Lake Annecy — turquoise and impossibly clear</div></div>
       </div>
     </div>
   </div>
@@ -340,7 +460,32 @@ body{font-family:'DM Sans',sans-serif;background:var(--sand);color:var(--ink);ov
         </div>
       </div>
       <div class="day-right">
-        <div class="day-photo"><div class="cap">Col de la Forclaz — our sunset picnic spot</div></div>
+        <div class="day-photo"><div class="day-icon-wrap"><svg viewBox="0 0 280 180" xmlns="http://www.w3.org/2000/svg" style="width:180px;height:auto;opacity:0.85">
+  <!-- setting sun (half circle) -->
+  <path d="M100 130 A50 50 0 0 1 200 130" fill="rgba(201,168,76,0.2)" stroke="#c9a84c" stroke-width="1.8"/>
+  <!-- sun rays fanning up -->
+  <line x1="150" y1="80" x2="150" y2="72" stroke="#c9a84c" stroke-width="1.4" opacity="0.6"/>
+  <line x1="118" y1="88" x2="113" y2="82" stroke="#c9a84c" stroke-width="1.4" opacity="0.6"/>
+  <line x1="182" y1="88" x2="187" y2="82" stroke="#c9a84c" stroke-width="1.4" opacity="0.6"/>
+  <line x1="105" y1="110" x2="98" y2="108" stroke="#c9a84c" stroke-width="1.4" opacity="0.6"/>
+  <line x1="195" y1="110" x2="202" y2="108" stroke="#c9a84c" stroke-width="1.4" opacity="0.6"/>
+  <!-- mountain peaks -->
+  <path d="M0 130 L45 68 L80 100 L115 48 L155 90 L190 58 L230 85 L280 70 L280 130Z" fill="rgba(74,143,168,0.22)" stroke="#4a8fa8" stroke-width="1.2"/>
+  <!-- horizon line -->
+  <line x1="0" y1="130" x2="280" y2="130" stroke="#d4eaf2" stroke-width="1" opacity="0.4"/>
+  <!-- picnic blanket -->
+  <rect x="90" y="148" width="100" height="18" rx="2" fill="rgba(74,143,168,0.3)" stroke="#d4eaf2" stroke-width="1.4"/>
+  <line x1="90" y1="157" x2="190" y2="157" stroke="#d4eaf2" stroke-width="0.8" opacity="0.5"/>
+  <!-- wine glass -->
+  <path d="M170 130 Q165 138 162 148" stroke="#d4eaf2" stroke-width="1.4" fill="none"/>
+  <path d="M158 130 Q163 138 162 148" stroke="#d4eaf2" stroke-width="1.4" fill="none"/>
+  <line x1="162" y1="148" x2="162" y2="155" stroke="#d4eaf2" stroke-width="1.4"/>
+  <line x1="158" y1="155" x2="166" y2="155" stroke="#d4eaf2" stroke-width="1.4"/>
+  <!-- bike wheel -->
+  <circle cx="110" cy="143" r="10" stroke="#4a8fa8" stroke-width="1.4" fill="none" opacity="0.7"/>
+  <line x1="100" y1="143" x2="120" y2="143" stroke="#4a8fa8" stroke-width="0.8" opacity="0.5"/>
+  <line x1="110" y1="133" x2="110" y2="153" stroke="#4a8fa8" stroke-width="0.8" opacity="0.5"/>
+</svg></div><div class="cap">Col de la Forclaz — our sunset picnic spot</div></div>
       </div>
     </div>
   </div>
@@ -359,7 +504,31 @@ body{font-family:'DM Sans',sans-serif;background:var(--sand);color:var(--ink);ov
         </div>
       </div>
       <div class="day-right">
-        <div class="day-photo"><div class="cap">Alpine trails — wildflowers &amp; lake views</div></div>
+        <div class="day-photo"><div class="day-icon-wrap"><svg viewBox="0 0 280 180" xmlns="http://www.w3.org/2000/svg" style="width:180px;height:auto;opacity:0.85">
+  <!-- sky glow -->
+  <defs><radialGradient id="sg" cx="50%" cy="30%" r="60%">
+    <stop offset="0%" stop-color="rgba(74,143,168,0.2)"/>
+    <stop offset="100%" stop-color="rgba(74,143,168,0)"/>
+  </radialGradient></defs>
+  <rect width="280" height="180" fill="url(#sg)"/>
+  <!-- three mountain peaks -->
+  <path d="M0 160 L55 55 L90 100 L130 30 L170 95 L210 50 L260 110 L280 105 L280 160Z" fill="rgba(74,143,168,0.22)" stroke="#4a8fa8" stroke-width="1.2"/>
+  <!-- snow caps -->
+  <path d="M118 48 L130 30 L142 48 Q136 42 130 36 Q124 42 118 48Z" fill="rgba(212,234,242,0.5)"/>
+  <path d="M200 64 L210 50 L220 64 Q215 58 210 54 Q205 58 200 64Z" fill="rgba(212,234,242,0.5)"/>
+  <path d="M46 68 L55 55 L64 68 Q59 62 55 58 Q51 62 46 68Z" fill="rgba(212,234,242,0.4)"/>
+  <!-- winding trail -->
+  <path d="M20 160 Q60 145 80 130 Q100 115 120 120 Q145 126 165 110 Q185 95 210 100" stroke="#d4eaf2" stroke-width="1.6" fill="none" stroke-dasharray="4 3" opacity="0.8"/>
+  <!-- wildflowers -->
+  <line x1="30" y1="162" x2="30" y2="145" stroke="#4a8fa8" stroke-width="1.3"/>
+  <circle cx="30" cy="143" r="4" fill="rgba(201,168,76,0.5)" stroke="#c9a84c" stroke-width="1"/>
+  <line x1="50" y1="162" x2="50" y2="150" stroke="#4a8fa8" stroke-width="1.3"/>
+  <circle cx="50" cy="148" r="3" fill="rgba(212,234,242,0.4)" stroke="#d4eaf2" stroke-width="1"/>
+  <line x1="240" y1="162" x2="240" y2="148" stroke="#4a8fa8" stroke-width="1.3"/>
+  <circle cx="240" cy="146" r="4" fill="rgba(201,168,76,0.5)" stroke="#c9a84c" stroke-width="1"/>
+  <line x1="258" y1="162" x2="258" y2="152" stroke="#4a8fa8" stroke-width="1.3"/>
+  <circle cx="258" cy="150" r="3" fill="rgba(212,234,242,0.4)" stroke="#d4eaf2" stroke-width="1"/>
+</svg></div><div class="cap">Alpine trails — wildflowers &amp; lake views</div></div>
       </div>
     </div>
   </div>
@@ -378,7 +547,27 @@ body{font-family:'DM Sans',sans-serif;background:var(--sand);color:var(--ink);ov
         </div>
       </div>
       <div class="day-right">
-        <div class="day-photo"><div class="cap">Golf du Lac d'Annecy — Alps on every hole</div></div>
+        <div class="day-photo"><div class="day-icon-wrap"><svg viewBox="0 0 280 180" xmlns="http://www.w3.org/2000/svg" style="width:180px;height:auto;opacity:0.85">
+  <!-- Alps backdrop -->
+  <path d="M0 110 L40 65 L75 90 L110 45 L145 80 L175 50 L215 75 L250 55 L280 70 L280 110Z" fill="rgba(74,143,168,0.22)" stroke="#4a8fa8" stroke-width="1.2"/>
+  <!-- snow -->
+  <path d="M100 58 L110 45 L120 58 Q115 52 110 48 Q105 52 100 58Z" fill="rgba(212,234,242,0.5)"/>
+  <!-- rolling fairway hills -->
+  <path d="M0 150 Q70 120 140 135 Q210 150 280 125 L280 180 L0 180Z" fill="rgba(44,100,120,0.4)" stroke="#4a8fa8" stroke-width="1.2"/>
+  <path d="M0 165 Q90 145 180 158 Q230 165 280 148 L280 180 L0 180Z" fill="rgba(26,70,88,0.5)"/>
+  <!-- flag pole -->
+  <line x1="155" y1="105" x2="155" y2="148" stroke="#d4eaf2" stroke-width="2"/>
+  <!-- flag -->
+  <path d="M155 105 L175 113 L155 121Z" fill="rgba(201,168,76,0.7)" stroke="#c9a84c" stroke-width="1"/>
+  <!-- hole circle -->
+  <ellipse cx="155" cy="149" rx="6" ry="2.5" fill="rgba(0,0,0,0.4)" stroke="#4a8fa8" stroke-width="0.8"/>
+  <!-- golf ball -->
+  <circle cx="200" cy="143" r="6" fill="rgba(212,234,242,0.8)" stroke="#d4eaf2" stroke-width="1.2"/>
+  <!-- distant trees -->
+  <path d="M20 125 L26 108 L32 125Z" fill="rgba(74,143,168,0.4)"/>
+  <path d="M35 128 L41 114 L47 128Z" fill="rgba(74,143,168,0.4)"/>
+  <path d="M245 118 L251 104 L257 118Z" fill="rgba(74,143,168,0.4)"/>
+</svg></div><div class="cap">Golf du Lac d'Annecy — Alps on every hole</div></div>
       </div>
     </div>
   </div>
@@ -395,7 +584,30 @@ body{font-family:'DM Sans',sans-serif;background:var(--sand);color:var(--ink);ov
         </div>
       </div>
       <div class="day-right">
-        <div class="day-photo"><div class="cap">A free day, the Alps and us</div></div>
+        <div class="day-photo"><div class="day-icon-wrap"><svg viewBox="0 0 280 180" xmlns="http://www.w3.org/2000/svg" style="width:180px;height:auto;opacity:0.85">
+  <!-- mountains far -->
+  <path d="M0 130 L40 85 L80 110 L115 68 L155 100 L190 72 L230 95 L280 80 L280 130Z" fill="rgba(74,143,168,0.22)" stroke="#4a8fa8" stroke-width="1.2" opacity="0.6"/>
+  <!-- snow caps -->
+  <path d="M107 80 L115 68 L123 80 Q119 74 115 70 Q111 74 107 80Z" fill="rgba(212,234,242,0.4)"/>
+  <!-- pine tree left -->
+  <line x1="60" y1="180" x2="60" y2="105" stroke="#4a8fa8" stroke-width="2.2"/>
+  <path d="M38 135 L60 105 L82 135Z" fill="rgba(44,100,120,0.5)" stroke="#4a8fa8" stroke-width="1.2"/>
+  <path d="M43 120 L60 96 L77 120Z" fill="rgba(44,100,120,0.5)" stroke="#4a8fa8" stroke-width="1.2"/>
+  <!-- pine tree right -->
+  <line x1="220" y1="180" x2="220" y2="105" stroke="#4a8fa8" stroke-width="2.2"/>
+  <path d="M198 135 L220 105 L242 135Z" fill="rgba(44,100,120,0.5)" stroke="#4a8fa8" stroke-width="1.2"/>
+  <path d="M203 120 L220 96 L237 120Z" fill="rgba(44,100,120,0.5)" stroke="#4a8fa8" stroke-width="1.2"/>
+  <!-- hammock -->
+  <path d="M60 138 Q140 155 220 138" stroke="#d4eaf2" stroke-width="2.2" fill="none"/>
+  <path d="M60 138 Q140 148 220 138" stroke="#d4eaf2" stroke-width="1.2" fill="rgba(74,143,168,0.15)"/>
+  <line x1="60" y1="130" x2="60" y2="145" stroke="#d4eaf2" stroke-width="1.4"/>
+  <line x1="220" y1="130" x2="220" y2="145" stroke="#d4eaf2" stroke-width="1.4"/>
+  <!-- person silhouette in hammock -->
+  <ellipse cx="140" cy="145" rx="22" ry="6" fill="rgba(212,234,242,0.15)" stroke="#d4eaf2" stroke-width="0.8"/>
+  <circle cx="162" cy="141" r="5" fill="rgba(212,234,242,0.2)" stroke="#d4eaf2" stroke-width="1"/>
+  <!-- lake -->
+  <path d="M0 168 Q70 162 140 168 Q210 174 280 168" stroke="#4a8fa8" stroke-width="1.4" fill="none" opacity="0.7" opacity="0.5"/>
+</svg></div><div class="cap">A free day, the Alps and us</div></div>
       </div>
     </div>
   </div>
@@ -414,7 +626,27 @@ body{font-family:'DM Sans',sans-serif;background:var(--sand);color:var(--ink);ov
         </div>
       </div>
       <div class="day-right">
-        <div class="day-photo"><div class="cap">Until next time, Annecy ♡</div></div>
+        <div class="day-photo"><div class="day-icon-wrap"><svg viewBox="0 0 280 180" xmlns="http://www.w3.org/2000/svg" style="width:180px;height:auto;opacity:0.85">
+  <!-- heart -->
+  <path d="M140 150 Q80 120 80 85 Q80 55 110 55 Q130 55 140 72 Q150 55 170 55 Q200 55 200 85 Q200 120 140 150Z"
+        fill="rgba(74,143,168,0.2)" stroke="#d4eaf2" stroke-width="2"/>
+  <!-- castle outline inside heart -->
+  <rect x="118" y="100" width="44" height="30" fill="rgba(74,143,168,0.3)" stroke="#4a8fa8" stroke-width="1.2"/>
+  <!-- battlements -->
+  <rect x="118" y="94" width="7" height="8" fill="rgba(74,143,168,0.3)" stroke="#4a8fa8" stroke-width="1"/>
+  <rect x="129" y="94" width="7" height="8" fill="rgba(74,143,168,0.3)" stroke="#4a8fa8" stroke-width="1"/>
+  <rect x="140" y="94" width="7" height="8" fill="rgba(74,143,168,0.3)" stroke="#4a8fa8" stroke-width="1"/>
+  <rect x="151" y="94" width="7" height="8" fill="rgba(74,143,168,0.3)" stroke="#4a8fa8" stroke-width="1"/>
+  <!-- tower -->
+  <rect x="128" y="78" width="14" height="22" fill="rgba(74,143,168,0.3)" stroke="#4a8fa8" stroke-width="1.2"/>
+  <path d="M126 78 L135 68 L144 78Z" fill="rgba(74,143,168,0.4)" stroke="#4a8fa8" stroke-width="1.2"/>
+  <!-- door -->
+  <path d="M136 130 L136 115 Q140 112 144 115 L144 130Z" fill="rgba(26,37,48,0.6)" stroke="#4a8fa8" stroke-width="1"/>
+  <!-- plane trail -->
+  <path d="M30 50 Q100 35 200 45" stroke="#d4eaf2" stroke-width="1" fill="none" stroke-dasharray="3 4" opacity="0.5"/>
+  <!-- plane -->
+  <path d="M200 44 L214 41 L200 38 L204 41Z" fill="rgba(212,234,242,0.6)" stroke="#d4eaf2" stroke-width="1"/>
+</svg></div><div class="cap">Until next time, Annecy ♡</div></div>
       </div>
     </div>
   </div>
