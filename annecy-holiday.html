@@ -636,7 +636,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--sand);color:var(--ink);ov
     <h2>So, Callum...<br><em>are you in?</em></h2>
     <p class="rsvp-sub">One week in the French Alps with me. Your answer, please. ♡<br><span style="font-size:0.85rem;opacity:0.7">(tapping a button will open Mail with a pre-written reply)</span></p>
     <div class="rsvp-btns">
-      <button class="rbtn rbtn-yes" onclick="handleRSVP('yes')">✓ &nbsp; I Accept</button>
+      <a class="rbtn rbtn-yes" href="mailto:seren.cummings@me.com?subject=YES%20to%20Annecy%21%20%E2%9C%88%E2%99%A1&body=Seren%2C%0A%0AI%20accept%20your%20Annecy%20proposal.%20Let%27s%20go.%0A%0ALove%2C%0ACallum%20%E2%99%A1">✓ &nbsp; I Accept</a>
       <button class="rbtn rbtn-no" onclick="handleRSVP('no')">✕ &nbsp; I Decline</button>
     </div>
     <div id="rsvp-msg" class="rsvp-msg"></div>
@@ -654,7 +654,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--sand);color:var(--ink);ov
         <input class="qa-input" type="text" placeholder="Subject (e.g. Day 3 swap)" id="qa-subject">
       </div>
       <textarea class="qa-textarea" placeholder="Your question, suggestion or amendment..." id="qa-message"></textarea>
-      <button class="qa-submit" onclick="submitQA()">Send to Seren →</button>
+      <a class="qa-submit" href="#" onclick="return submitQA(this)">Send to Seren →</a>
     </div>
     <div class="qa-thanks" id="qa-thanks">
       Noted, Callum. Seren will get back to you. 📩 ♡
@@ -703,20 +703,17 @@ function handleRSVP(answer) {
   }
 }
 
-function submitQA() {
+function submitQA(el) {
   const name = document.getElementById('qa-name').value.trim() || 'Callum';
   const subj = document.getElementById('qa-subject').value.trim() || 'Itinerary question';
   const msg = document.getElementById('qa-message').value.trim();
-  if (!msg) { document.getElementById('qa-message').focus(); return; }
-  const s = encodeURIComponent(`Annecy itinerary: ${subj}`);
-  const b = encodeURIComponent(`From: ${name}\n\n${msg}`);
-  const a = document.createElement('a');
-  a.href = `mailto:${SEREN_EMAIL}?subject=${s}&body=${b}`;
-  document.body.appendChild(a);
-  a.click();
-  document.body.removeChild(a);
+  if (!msg) { document.getElementById('qa-message').focus(); return false; }
+  const s = encodeURIComponent('Annecy itinerary: ' + subj);
+  const b = encodeURIComponent('From: ' + name + '\n\n' + msg);
+  el.href = 'mailto:' + SEREN_EMAIL + '?subject=' + s + '&body=' + b;
   document.getElementById('qa-form').style.display = 'none';
   document.getElementById('qa-thanks').classList.add('show');
+  return true;
 }
 </script>
 </body>
