@@ -630,11 +630,11 @@ body{font-family:'DM Sans',sans-serif;background:var(--sand);color:var(--ink);ov
     <p class="lede">Want to tweak something, swap a day around, or ask me anything? Fill it in and I'll get an email. 💬</p>
     <div class="qa-form" id="qa-form">
       <div class="qa-row">
-        <input class="qa-input" type="text" placeholder="Your name" id="qa-name" value="Callum">
-        <input class="qa-input" type="text" placeholder="Subject (e.g. Day 3 swap)" id="qa-subject">
+        <input class="qa-input" type="text" placeholder="Your name" id="qa-name" value="Callum" oninput="updateMailto()">
+        <input class="qa-input" type="text" placeholder="Subject (e.g. Too expensive?)" id="qa-subject" oninput="updateMailto()">
       </div>
-      <textarea class="qa-textarea" placeholder="Your question, suggestion or amendment..." id="qa-message"></textarea>
-      <a class="qa-submit" href="#" onclick="return submitQA(this)">Send to Seren →</a>
+      <textarea class="qa-textarea" placeholder="Your question, suggestion or amendment..." id="qa-message" oninput="updateMailto()"></textarea>
+      <a class="qa-submit" id="qa-send-link" href="mailto:seren.cummings@me.com?subject=Annecy%20itinerary%3A%20Itinerary%20question&body=From%3A%20Callum%0A%0A" onclick="return handleSend()">Send to Seren →</a>
     </div>
     <div class="qa-thanks" id="qa-thanks">
       Noted, Callum. Seren will get back to you. 📩 ♡
@@ -683,17 +683,21 @@ function handleRSVP(answer) {
   }
 }
 
-function submitQA(el) {
+function updateMailto() {
   const name = document.getElementById('qa-name').value.trim() || 'Callum';
   const subj = document.getElementById('qa-subject').value.trim() || 'Itinerary question';
-  const msg = document.getElementById('qa-message').value.trim();
-  if (!msg) { document.getElementById('qa-message').focus(); return false; }
+  const msg  = document.getElementById('qa-message').value.trim();
   const s = encodeURIComponent('Annecy itinerary: ' + subj);
   const b = encodeURIComponent('From: ' + name + '\n\n' + msg);
-  el.href = 'mailto:' + SEREN_EMAIL + '?subject=' + s + '&body=' + b;
-  document.getElementById('qa-form').style.display = 'none';
-  document.getElementById('qa-thanks').classList.add('show');
-  return true;
+  document.getElementById('qa-send-link').href = 'mailto:' + SEREN_EMAIL + '?subject=' + s + '&body=' + b;
+}
+function handleSend() {
+  const msg = document.getElementById('qa-message').value.trim();
+  if (!msg) { document.getElementById('qa-message').focus(); return false; }
+  setTimeout(function() {
+    document.getElementById('qa-form').style.display = 'none';
+    document.getElementById('qa-thanks').classList.add('show');
+  }, 300);
 }
 </script>
 </body>
