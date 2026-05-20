@@ -247,7 +247,7 @@ body{display:flex;align-items:center;justify-content:center;padding:40px 20px;mi
       Write to Seren
     </a>
     <div style="display:flex;gap:10px;margin-bottom:32px">
-      <a href="data:text/calendar;charset=utf8,BEGIN%3AVCALENDAR%0AVERSION%3A2.0%0APRODID%3A-//Seren%20Cummings//Annecy%202026//EN%0ACALSCALE%3AGREGORIAN%0AMETHOD%3APUBLISH%0ABEGIN%3AVEVENT%0AUID%3Aannecy-outbound-2026%40seren%0ASUMMARY%3ALHR%20to%20GVA%20-%20Annecy%20Holiday%0ADTSTART%3BTZID%3DEurope/London%3A20260622T085500%0ADTEND%3BTZID%3DEurope/Zurich%3A20260622T113500%0ALOCATION%3ALondon%20Heathrow%20Terminal%202%0ADESCRIPTION%3AFlight%20LX353%20-%20LHR%20T2%20to%20GVA%20T1%20-%20Nonstop%20-%20Annecy%20Holiday%20with%20Seren%0ASTATUS%3ACONFIRMED%0AEND%3AVEVENT%0ABEGIN%3AVEVENT%0AUID%3Aannecy-return-2026%40seren%0ASUMMARY%3AGVA%20to%20LHR%20-%20Annecy%20Holiday%0ADTSTART%3BTZID%3DEurope/Zurich%3A20260628T175000%0ADTEND%3BTZID%3DEurope/London%3A20260628T183000%0ALOCATION%3AGeneva%20Airport%20Terminal%201%0ADESCRIPTION%3AFlight%20LX356%20-%20GVA%20T1%20to%20LHR%20T2%20-%20Nonstop%20-%20Annecy%20Holiday%20with%20Seren%0ASTATUS%3ACONFIRMED%0AEND%3AVEVENT%0AEND%3AVCALENDAR" style="display:block;flex:1;background:#004a2d;color:#c9a84c;font-family:'Cormorant Garamond',serif;font-size:.95rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;text-align:center;text-decoration:none;padding:14px 16px">
+      <a href="#" onclick="addToCalendar();return false;" style="display:block;flex:1;background:#004a2d;color:#c9a84c;font-family:'Cormorant Garamond',serif;font-size:.95rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;text-align:center;text-decoration:none;padding:14px 16px">
         Add Flights to Calendar
       </a>
     </div>
@@ -361,6 +361,42 @@ body{display:flex;align-items:center;justify-content:center;padding:40px 20px;mi
   b.style.height=(14+Math.random()*18)+'px';
   document.getElementById('bc').appendChild(b);
 });
+
+function addToCalendar(){
+  var ics = `BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Seren Cummings//Annecy 2026//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:annecy-outbound-2026@seren
+SUMMARY:LHR to GVA - Annecy Holiday
+DTSTART;TZID=Europe/London:20260622T085500
+DTEND;TZID=Europe/Zurich:20260622T113500
+LOCATION:London Heathrow Terminal 2
+DESCRIPTION:Flight LX353 - LHR T2 to GVA T1 - Nonstop
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:annecy-return-2026@seren
+SUMMARY:GVA to LHR - Annecy Holiday
+DTSTART;TZID=Europe/Zurich:20260628T175000
+DTEND;TZID=Europe/London:20260628T183000
+LOCATION:Geneva Airport Terminal 1
+DESCRIPTION:Flight LX356 - GVA T1 to LHR T2 - Nonstop
+STATUS:CONFIRMED
+END:VEVENT
+END:VCALENDAR`;
+  var blob = new Blob([ics], {type:'text/calendar;charset=utf-8'});
+  var url  = URL.createObjectURL(blob);
+  var a    = document.createElement('a');
+  a.href   = url;
+  a.download = 'annecy-flights.ics';
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  setTimeout(function(){URL.revokeObjectURL(url);}, 1000);
+}
 </script>
 </body>
 </html>
