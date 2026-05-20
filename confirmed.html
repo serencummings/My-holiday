@@ -187,22 +187,25 @@ body{display:flex;align-items:center;justify-content:center;padding:40px 20px;mi
 
 /* stamp flip - CSS only */
 .stamp-input{display:none}
-.stamp-wrap{perspective:600px;-webkit-perspective:600px;width:72px;height:72px;cursor:pointer;flex-shrink:0;display:block}
+.stamp-section{display:flex;flex-direction:column;align-items:center;margin-bottom:28px;padding-top:2px}
+.stamp-hint{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:.7rem;font-weight:300;color:rgba(122,112,96,.5);margin-top:8px;letter-spacing:.03em}
+.stamp-wrap{perspective:700px;-webkit-perspective:700px;width:90px;height:90px;cursor:pointer;display:block}
 .stamp-inner{position:relative;width:100%;height:100%;transform-style:preserve-3d;-webkit-transform-style:preserve-3d;transition:transform .6s ease}
 #stamp-cb:checked+.stamp-wrap .stamp-inner{transform:rotateY(180deg)}
-.stamp-face,.stamp-back{position:absolute;inset:0;border-radius:50%;backface-visibility:hidden;-webkit-backface-visibility:hidden;display:flex;flex-direction:column;align-items:center;justify-content:center;border:2px solid rgba(0,96,58,.3)}
-.stamp-face{background:#fff}
-.stamp-face::after{content:'';position:absolute;inset:4px;border-radius:50%;border:1px solid rgba(0,96,58,.15)}
-.stamp-back{background:var(--green);transform:rotateY(180deg);padding:8px}
-.stamp-top{font-size:.38rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);font-weight:500}
-.stamp-mid{font-family:'Cormorant Garamond',serif;font-size:.9rem;font-weight:700;color:var(--green-deep);line-height:1;margin:2px 0}
-.stamp-bot{font-size:.36rem;letter-spacing:.18em;text-transform:uppercase;color:var(--warm-grey);font-weight:500}
-.stamp-msg{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:.58rem;font-weight:300;color:#fff;text-align:center;line-height:1.4;padding:4px}
+.stamp-face,.stamp-back{position:absolute;inset:0;border-radius:50%;backface-visibility:hidden;-webkit-backface-visibility:hidden;display:flex;flex-direction:column;align-items:center;justify-content:center;border:2px solid rgba(190,130,70,.4)}
+.stamp-face{background:radial-gradient(circle at 38% 35%,#c42020 0%,#8b1212 55%,#6a0d0d 100%);box-shadow:inset 0 2px 6px rgba(255,180,120,.15),inset 0 -2px 4px rgba(0,0,0,.3),0 2px 10px rgba(0,0,0,.2)}
+.stamp-face::after{content:'';position:absolute;inset:6px;border-radius:50%;border:1px solid rgba(200,150,80,.3)}
+.stamp-back{background:radial-gradient(circle at 50% 40%,#7a1010,#4d0808);transform:rotateY(180deg);padding:10px}
+.stamp-top{font-size:.38rem;letter-spacing:.2em;text-transform:uppercase;color:#e8c87a;font-weight:500}
+.stamp-mid{font-family:'Cormorant Garamond',serif;font-size:.95rem;font-weight:700;color:#f5e5c0;line-height:1;margin:2px 0}
+.stamp-bot{font-size:.36rem;letter-spacing:.18em;text-transform:uppercase;color:#d4a860;font-weight:500}
+.stamp-msg{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:.6rem;font-weight:300;color:#fce8d4;text-align:center;line-height:1.45;padding:4px}
 
 /* checklist - CSS only */
 .cl-input{display:none}
 .checklist{margin-bottom:28px}
-.cl-title{font-size:.46rem;letter-spacing:.4em;text-transform:uppercase;color:var(--warm-grey);margin-bottom:12px}
+.cl-title{font-size:.46rem;letter-spacing:.4em;text-transform:uppercase;color:var(--warm-grey);margin-bottom:4px}
+.cl-hint{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:.72rem;font-weight:300;color:rgba(122,112,96,.6);margin-bottom:12px}
 .cl-item{display:flex;align-items:center;gap:12px;padding:11px 0;border-bottom:1px solid rgba(0,96,58,.08);cursor:pointer;-webkit-tap-highlight-color:transparent}
 .cl-item:first-of-type{border-top:1px solid rgba(0,96,58,.08)}
 .cl-box{width:18px;height:18px;border-radius:3px;border:1.5px solid rgba(0,96,58,.3);flex-shrink:0;display:flex;align-items:center;justify-content:center;transition:all .2s}
@@ -270,6 +273,23 @@ body{display:flex;align-items:center;justify-content:center;padding:40px 20px;mi
 
   <div class="pass-body">
 
+    <div class="stamp-section">
+      <input type="checkbox" id="stamp-cb" class="stamp-input">
+      <label for="stamp-cb" class="stamp-wrap" title="Tap to reveal">
+        <div class="stamp-inner">
+          <div class="stamp-face">
+            <div class="stamp-top">Confirmed</div>
+            <div class="stamp-mid">ANC</div>
+            <div class="stamp-bot">2026</div>
+          </div>
+          <div class="stamp-back">
+            <div class="stamp-msg">I love you, I can&rsquo;t wait to be away with you again</div>
+          </div>
+        </div>
+      </label>
+      <div class="stamp-hint">Tap to reveal</div>
+    </div>
+
     <div class="confirmed-mark">
       <div class="mark-line"></div>
       <div class="mark-text">Confirmed</div>
@@ -323,6 +343,7 @@ body{display:flex;align-items:center;justify-content:center;padding:40px 20px;mi
 
     <div class="checklist">
       <div class="cl-title">Packing List</div>
+      <div class="cl-hint">Tap each item to check off</div>
       <input type="checkbox" id="cl1" class="cl-input">
       <label for="cl1" class="cl-item">
         <div class="cl-box"><div class="cl-tick"></div></div>
@@ -351,19 +372,6 @@ body{display:flex;align-items:center;justify-content:center;padding:40px 20px;mi
         <div class="base-ref">SC &middot; CM &middot; ANC26</div>
         <div class="base-year">Summer 2026</div>
       </div>
-      <input type="checkbox" id="stamp-cb" class="stamp-input">
-      <label for="stamp-cb" class="stamp-wrap" title="Tap me">
-        <div class="stamp-inner">
-          <div class="stamp-face">
-            <div class="stamp-top">Confirmed</div>
-            <div class="stamp-mid">ANC</div>
-            <div class="stamp-bot">2026</div>
-          </div>
-          <div class="stamp-back">
-            <div class="stamp-msg">I love you, I can&rsquo;t wait to be away with you again</div>
-          </div>
-        </div>
-      </label>
     </div>
 
   </div>
