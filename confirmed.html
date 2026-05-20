@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>We're Going — Annecy 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=DM+Sans:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --ink:#1a2530;
+  --lake:#4a8fa8;
+  --lake-deep:#2c6478;
+  --lake-pale:#d4eaf2;
+  --gold:#c9a84c;
+  --cream:#faf8f4;
+  --sand:#f2ede6;
+}
+html{min-height:100%;background:var(--sand)}
+body{
+  font-family:'DM Sans',sans-serif;
+  background:var(--sand);
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  padding:32px 16px;
+}
+
+/* ── confetti burst ── */
+.burst{position:fixed;inset:0;pointer-events:none;overflow:hidden;z-index:0}
+.dot{position:absolute;border-radius:50%;animation:fall linear forwards}
+@keyframes fall{
+  0%{transform:translateY(-20px) rotate(0deg);opacity:1}
+  100%{transform:translateY(110vh) rotate(720deg);opacity:0}
+}
+
+/* ── card ── */
+.card{
+  position:relative;z-index:1;
+  width:100%;max-width:420px;
+  background:#fff;
+  border-radius:20px;
+  box-shadow:0 24px 64px rgba(26,37,48,.18),0 4px 16px rgba(26,37,48,.08);
+  overflow:visible;
+}
+
+/* ── top section ── */
+.top{
+  background:var(--ink);
+  border-radius:20px 20px 0 0;
+  padding:32px 28px 28px;
+  position:relative;
+  overflow:hidden;
+}
+.top::before{
+  content:'';
+  position:absolute;inset:0;
+  background:radial-gradient(ellipse at 80% 0%,rgba(74,143,168,.35) 0%,transparent 65%);
+}
+.airline-row{
+  display:flex;align-items:center;justify-content:space-between;
+  margin-bottom:28px;position:relative;z-index:1;
+}
+.airline-name{
+  font-family:'Playfair Display',serif;
+  font-size:.7rem;letter-spacing:.35em;text-transform:uppercase;
+  color:rgba(255,255,255,.5);
+}
+.bp-label{
+  font-size:.55rem;letter-spacing:.3em;text-transform:uppercase;
+  color:var(--gold);font-weight:600;
+}
+.route{
+  display:flex;align-items:center;gap:0;
+  position:relative;z-index:1;margin-bottom:24px;
+}
+.city{flex:1}
+.city-code{
+  font-family:'Playfair Display',serif;
+  font-size:3.2rem;font-weight:700;color:#fff;line-height:1;
+}
+.city-name{
+  font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;
+  color:rgba(255,255,255,.45);margin-top:4px;
+}
+.route-mid{
+  flex:1;display:flex;flex-direction:column;align-items:center;gap:6px;
+  padding:0 8px;
+}
+.plane-line{
+  width:100%;display:flex;align-items:center;gap:0;
+}
+.line{flex:1;height:1px;background:rgba(255,255,255,.2)}
+.plane-icon{color:rgba(255,255,255,.6);font-size:1.1rem;transform:rotate(0deg)}
+.route-label{
+  font-size:.5rem;letter-spacing:.18em;text-transform:uppercase;
+  color:rgba(255,255,255,.3);
+}
+.city.right{text-align:right}
+
+.info-row{
+  display:grid;grid-template-columns:1fr 1fr 1fr;
+  gap:0;position:relative;z-index:1;
+}
+.info-item{}
+.info-label{
+  font-size:.5rem;letter-spacing:.22em;text-transform:uppercase;
+  color:rgba(255,255,255,.35);margin-bottom:4px;
+}
+.info-val{
+  font-family:'DM Mono',monospace;
+  font-size:.82rem;color:#fff;font-weight:500;letter-spacing:.05em;
+}
+.info-item.right{text-align:right}
+
+/* ── tear line ── */
+.tear{
+  position:relative;
+  display:flex;align-items:center;
+  margin:0 -1px;
+}
+.notch{
+  width:22px;height:22px;border-radius:50%;
+  background:var(--sand);flex-shrink:0;
+}
+.notch.left{margin-left:-11px}
+.notch.right{margin-right:-11px}
+.dash-line{
+  flex:1;border-top:1.5px dashed rgba(26,37,48,.12);
+  margin:0 4px;
+}
+
+/* ── stamp section ── */
+.stamp-area{
+  padding:24px 28px 28px;
+  position:relative;
+}
+.we-going{
+  font-family:'Playfair Display',serif;
+  font-size:2.4rem;font-weight:700;color:var(--ink);
+  line-height:1.1;margin-bottom:6px;
+}
+.we-going em{color:var(--lake);font-style:italic}
+.tagline{
+  font-family:'Playfair Display',serif;
+  font-style:italic;font-size:.95rem;
+  color:rgba(26,37,48,.45);margin-bottom:24px;
+}
+
+.confirms{display:flex;flex-direction:column;gap:10px;margin-bottom:24px}
+.confirm-item{
+  display:flex;align-items:flex-start;gap:12px;
+}
+.confirm-icon{
+  width:28px;height:28px;border-radius:50%;
+  background:rgba(74,143,168,.12);
+  display:flex;align-items:center;justify-content:center;
+  flex-shrink:0;font-size:.9rem;margin-top:1px;
+}
+.confirm-text{}
+.confirm-title{
+  font-size:.78rem;font-weight:600;color:var(--ink);letter-spacing:.02em;
+}
+.confirm-sub{
+  font-size:.7rem;color:rgba(26,37,48,.45);margin-top:2px;line-height:1.4;
+}
+
+/* ── barcode ── */
+.barcode-wrap{
+  border-top:1px solid rgba(26,37,48,.06);
+  padding-top:18px;
+  display:flex;align-items:center;justify-content:space-between;
+  gap:16px;
+}
+.barcode{display:flex;gap:2px;align-items:flex-end;height:36px}
+.bar{background:var(--ink);border-radius:1px;width:2px}
+.bc-text{
+  font-family:'DM Mono',monospace;
+  font-size:.5rem;letter-spacing:.18em;
+  color:rgba(26,37,48,.3);
+  writing-mode:horizontal-tb;
+  white-space:nowrap;
+}
+.stamp{
+  width:68px;height:68px;border-radius:50%;
+  border:2.5px solid rgba(74,143,168,.35);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  flex-shrink:0;
+  transform:rotate(-12deg);
+  position:relative;
+}
+.stamp::after{
+  content:'';
+  position:absolute;inset:3px;border-radius:50%;
+  border:1px solid rgba(74,143,168,.2);
+}
+.stamp-top{font-size:.42rem;letter-spacing:.2em;text-transform:uppercase;color:var(--lake);font-weight:600}
+.stamp-mid{font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;color:var(--lake-deep);line-height:1}
+.stamp-bot{font-size:.4rem;letter-spacing:.18em;text-transform:uppercase;color:var(--lake);font-weight:500}
+
+/* ── bottom gold strip ── */
+.gold-strip{
+  background:var(--gold);
+  border-radius:0 0 20px 20px;
+  padding:10px 28px;
+  display:flex;align-items:center;justify-content:center;
+  gap:8px;
+}
+.gold-strip span{
+  font-size:.6rem;letter-spacing:.3em;text-transform:uppercase;
+  color:rgba(255,255,255,.9);font-weight:600;
+}
+
+/* ── from label ── */
+.from-badge{
+  display:inline-block;
+  font-size:.55rem;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--gold);font-weight:600;margin-bottom:20px;
+  background:rgba(201,168,76,.1);padding:4px 10px;border-radius:20px;
+  border:1px solid rgba(201,168,76,.3);
+}
+</style>
+</head>
+<body>
+
+<div class="burst" id="burst"></div>
+
+<div class="card">
+
+  <!-- TOP: boarding pass header -->
+  <div class="top">
+    <div class="airline-row">
+      <span class="airline-name">Seren &amp; Callum Air</span>
+      <span class="bp-label">Boarding Pass</span>
+    </div>
+
+    <div class="route">
+      <div class="city">
+        <div class="city-code">LHR</div>
+        <div class="city-name">London</div>
+      </div>
+      <div class="route-mid">
+        <div class="plane-line">
+          <div class="line"></div>
+          <div class="plane-icon">✈</div>
+          <div class="line"></div>
+        </div>
+        <div class="route-label">Direct</div>
+      </div>
+      <div class="city right">
+        <div class="city-code">GVA</div>
+        <div class="city-name">Geneva</div>
+      </div>
+    </div>
+
+    <div class="info-row">
+      <div class="info-item">
+        <div class="info-label">Passenger</div>
+        <div class="info-val">Callum</div>
+      </div>
+      <div class="info-item" style="text-align:center">
+        <div class="info-label">Date</div>
+        <div class="info-val">22 JUN 26</div>
+      </div>
+      <div class="info-item right">
+        <div class="info-label">Departs</div>
+        <div class="info-val">07:00</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TEAR LINE -->
+  <div class="tear">
+    <div class="notch left"></div>
+    <div class="dash-line"></div>
+    <div class="notch right"></div>
+  </div>
+
+  <!-- BOTTOM: confirmation stub -->
+  <div class="stamp-area">
+
+    <div class="from-badge">From Seren, with love ♡</div>
+
+    <div class="we-going">We're <em>going.</em></div>
+    <p class="tagline">One week in the French Alps — it's happening. ✨</p>
+
+    <div class="confirms">
+      <div class="confirm-item">
+        <div class="confirm-icon">✈</div>
+        <div class="confirm-text">
+          <div class="confirm-title">Flights Booked</div>
+          <div class="confirm-sub">LHR → GVA · Mon 22 June, 07:00<br>GVA → LHR · Sun 28 June, 17:50</div>
+        </div>
+      </div>
+      <div class="confirm-item">
+        <div class="confirm-icon">🏡</div>
+        <div class="confirm-text">
+          <div class="confirm-title">Accommodation Reserved</div>
+          <div class="confirm-sub">The Duplex — Villa 225 · Saint-Jorioz<br>6 nights · Private pool · Mountain terrace</div>
+        </div>
+      </div>
+      <div class="confirm-item">
+        <div class="confirm-icon">📅</div>
+        <div class="confirm-text">
+          <div class="confirm-title">Mon 22 — Sun 28 June 2026</div>
+          <div class="confirm-sub">Seven days of slow alpine bliss</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="barcode-wrap">
+      <div>
+        <div class="barcode" id="bc"></div>
+        <div class="bc-text" style="margin-top:6px">ANNECY · JUNE 2026 · SC+CK</div>
+      </div>
+      <div class="stamp">
+        <div class="stamp-top">Confirmed</div>
+        <div class="stamp-mid">ANC</div>
+        <div class="stamp-bot">2026</div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="gold-strip">
+    <span>✦ &nbsp; Seven days · Two of us · One perfect summer &nbsp; ✦</span>
+  </div>
+
+</div>
+
+<script>
+// Generate random barcode bars
+const bc = document.getElementById('bc');
+const widths = [2,3,2,4,2,3,2,2,4,2,3,2,4,2,2,3,2,4,2,3,2,2,4,2,3,2,2,3,4,2,2,3,2];
+widths.forEach(w => {
+  const b = document.createElement('div');
+  b.className = 'bar';
+  b.style.width = w + 'px';
+  b.style.height = (20 + Math.random() * 16) + 'px';
+  bc.appendChild(b);
+});
+
+// Confetti burst
+const burst = document.getElementById('burst');
+const colours = ['#4a8fa8','#c9a84c','#d4eaf2','#2c6478','#faf8f4','#c9a84c'];
+for (let i = 0; i < 55; i++) {
+  const d = document.createElement('div');
+  d.className = 'dot';
+  const size = 5 + Math.random() * 8;
+  d.style.cssText = `
+    left:${Math.random()*100}%;
+    top:-20px;
+    width:${size}px;
+    height:${size * (Math.random() > .5 ? 1 : 2.5)}px;
+    border-radius:${Math.random() > .5 ? '50%' : '2px'};
+    background:${colours[Math.floor(Math.random()*colours.length)]};
+    animation-duration:${2.5 + Math.random()*2.5}s;
+    animation-delay:${Math.random()*1.2}s;
+  `;
+  burst.appendChild(d);
+}
+</script>
+</body>
+</html>
