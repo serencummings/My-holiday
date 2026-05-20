@@ -185,49 +185,6 @@ body{display:flex;align-items:center;justify-content:center;padding:40px 20px;mi
 .cd-n{font-family:'Cormorant Garamond',serif;font-size:2.2rem;font-weight:300;color:var(--green-deep);line-height:1}
 .cd-u{font-size:.44rem;letter-spacing:.28em;text-transform:uppercase;color:var(--warm-grey);margin-top:4px}
 
-/* stamp flip - CSS only */
-.stamp-input{display:none}
-.stamp-section{display:flex;flex-direction:column;align-items:center;margin-bottom:28px;padding-top:2px}
-.stamp-hint{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:.7rem;font-weight:300;color:rgba(122,112,96,.5);margin-top:8px;letter-spacing:.03em}
-.stamp-wrap{perspective:700px;-webkit-perspective:700px;width:104px;height:104px;cursor:pointer;display:block}
-.stamp-inner{position:relative;width:100%;height:100%;transform-style:preserve-3d;-webkit-transform-style:preserve-3d;transition:transform .6s ease}
-#stamp-cb:checked+.stamp-wrap .stamp-inner{transform:rotateY(180deg)}
-.stamp-face,.stamp-back{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;display:flex;align-items:center;justify-content:center}
-.stamp-face{
-  border-radius:62% 38% 54% 46%/46% 58% 42% 54%;
-  background:radial-gradient(ellipse at 48% 46%,#c01c1c 0%,#951414 30%,#730f0f 62%,#550c0c 100%);
-  box-shadow:
-    inset 0 0 0 9px rgba(45,0,0,.3),
-    inset 0 3px 8px rgba(255,120,120,.13),
-    inset 0 -5px 12px rgba(0,0,0,.4),
-    0 6px 24px rgba(0,0,0,.5),
-    0 2px 6px rgba(0,0,0,.3);
-}
-.stamp-face::before{
-  content:'';position:absolute;top:5%;left:7%;width:54%;height:40%;
-  border-radius:50%;
-  background:radial-gradient(ellipse,rgba(255,255,255,.26),rgba(255,255,255,0));
-  transform:rotate(-22deg);pointer-events:none;
-}
-.stamp-face::after{
-  content:'';position:absolute;inset:15px;border-radius:50%;
-  border:1.5px solid rgba(30,0,0,.55);
-  box-shadow:0 0 0 1px rgba(145,55,55,.2),inset 0 1px 4px rgba(0,0,0,.2);
-}
-.seal-letter{
-  position:relative;z-index:2;
-  font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:400;font-size:3.4rem;
-  color:rgba(48,2,2,.5);
-  text-shadow:0 1px 3px rgba(170,70,70,.2),0 -1px 1px rgba(8,0,0,.42);
-  line-height:1;-webkit-user-select:none;user-select:none;
-}
-.stamp-back{
-  border-radius:50%;
-  background:radial-gradient(ellipse at 50% 40%,#8a1414,#520a0a);
-  border:2px solid rgba(60,0,0,.6);
-  transform:rotateY(180deg);padding:10px;
-}
-.stamp-msg{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:.6rem;font-weight:300;color:#fce8d4;text-align:center;line-height:1.45;padding:4px}
 
 /* checklist - CSS only */
 .cl-input{display:none}
@@ -300,21 +257,6 @@ body{display:flex;align-items:center;justify-content:center;padding:40px 20px;mi
   </div>
 
   <div class="pass-body">
-
-    <div class="stamp-section">
-      <input type="checkbox" id="stamp-cb" class="stamp-input">
-      <label for="stamp-cb" class="stamp-wrap" title="Tap to reveal">
-        <div class="stamp-inner">
-          <div class="stamp-face">
-            <div class="seal-letter">A</div>
-          </div>
-          <div class="stamp-back">
-            <div class="stamp-msg">I love you, I can&rsquo;t wait to be away with you again</div>
-          </div>
-        </div>
-      </label>
-      <div class="stamp-hint">Tap to reveal</div>
-    </div>
 
     <div class="confirmed-mark">
       <div class="mark-line"></div>
