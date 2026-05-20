@@ -185,10 +185,11 @@ body{display:flex;align-items:center;justify-content:center;padding:40px 20px;mi
 .cd-n{font-family:'Cormorant Garamond',serif;font-size:2.2rem;font-weight:300;color:var(--green-deep);line-height:1}
 .cd-u{font-size:.44rem;letter-spacing:.28em;text-transform:uppercase;color:var(--warm-grey);margin-top:4px}
 
-/* stamp flip */
-.stamp-wrap{perspective:600px;width:72px;height:72px;cursor:pointer;flex-shrink:0}
-.stamp-inner{position:relative;width:100%;height:100%;transform-style:preserve-3d;transition:transform .6s ease}
-.stamp-wrap.flipped .stamp-inner{transform:rotateY(180deg)}
+/* stamp flip - CSS only */
+.stamp-input{display:none}
+.stamp-wrap{perspective:600px;-webkit-perspective:600px;width:72px;height:72px;cursor:pointer;flex-shrink:0;display:block}
+.stamp-inner{position:relative;width:100%;height:100%;transform-style:preserve-3d;-webkit-transform-style:preserve-3d;transition:transform .6s ease}
+#stamp-cb:checked+.stamp-wrap .stamp-inner{transform:rotateY(180deg)}
 .stamp-face,.stamp-back{position:absolute;inset:0;border-radius:50%;backface-visibility:hidden;-webkit-backface-visibility:hidden;display:flex;flex-direction:column;align-items:center;justify-content:center;border:2px solid rgba(0,96,58,.3)}
 .stamp-face{background:#fff}
 .stamp-face::after{content:'';position:absolute;inset:4px;border-radius:50%;border:1px solid rgba(0,96,58,.15)}
@@ -198,17 +199,18 @@ body{display:flex;align-items:center;justify-content:center;padding:40px 20px;mi
 .stamp-bot{font-size:.36rem;letter-spacing:.18em;text-transform:uppercase;color:var(--warm-grey);font-weight:500}
 .stamp-msg{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:.58rem;font-weight:300;color:#fff;text-align:center;line-height:1.4;padding:4px}
 
-/* checklist */
+/* checklist - CSS only */
+.cl-input{display:none}
 .checklist{margin-bottom:28px}
 .cl-title{font-size:.46rem;letter-spacing:.4em;text-transform:uppercase;color:var(--warm-grey);margin-bottom:12px}
 .cl-item{display:flex;align-items:center;gap:12px;padding:11px 0;border-bottom:1px solid rgba(0,96,58,.08);cursor:pointer;-webkit-tap-highlight-color:transparent}
 .cl-item:first-of-type{border-top:1px solid rgba(0,96,58,.08)}
 .cl-box{width:18px;height:18px;border-radius:3px;border:1.5px solid rgba(0,96,58,.3);flex-shrink:0;display:flex;align-items:center;justify-content:center;transition:all .2s}
-.cl-item.checked .cl-box{background:var(--green);border-color:var(--green)}
+.cl-input:checked+.cl-item .cl-box{background:var(--green);border-color:var(--green)}
 .cl-tick{width:10px;height:7px;border-left:2px solid #fff;border-bottom:2px solid #fff;transform:rotate(-45deg) translateY(-1px);opacity:0;transition:opacity .15s}
-.cl-item.checked .cl-tick{opacity:1}
+.cl-input:checked+.cl-item .cl-tick{opacity:1}
 .cl-text{font-family:'Cormorant Garamond',serif;font-size:.95rem;font-weight:400;color:var(--green-deep);transition:all .2s}
-.cl-item.checked .cl-text{color:var(--warm-grey);text-decoration:line-through;text-decoration-color:rgba(0,96,58,.3)}
+.cl-input:checked+.cl-item .cl-text{color:var(--warm-grey);text-decoration:line-through;text-decoration-color:rgba(0,96,58,.3)}
 </style>
 </head>
 <body>
@@ -281,9 +283,7 @@ body{display:flex;align-items:center;justify-content:center;padding:40px 20px;mi
     <div class="countdown">
       <div class="cd-label">Departure in</div>
       <div class="cd-nums">
-        <div class="cd-block"><div class="cd-n" id="cd-d">--</div><div class="cd-u">Days</div></div>
-        <div class="cd-block"><div class="cd-n" id="cd-h">--</div><div class="cd-u">Hours</div></div>
-        <div class="cd-block"><div class="cd-n" id="cd-m">--</div><div class="cd-u">Minutes</div></div>
+        <div class="cd-block"><div class="cd-n">33</div><div class="cd-u">Days</div></div>
       </div>
     </div>
 
@@ -323,31 +323,36 @@ body{display:flex;align-items:center;justify-content:center;padding:40px 20px;mi
 
     <div class="checklist">
       <div class="cl-title">Packing List</div>
-      <div class="cl-item" onclick="toggleCheck(this)">
+      <input type="checkbox" id="cl1" class="cl-input">
+      <label for="cl1" class="cl-item">
         <div class="cl-box"><div class="cl-tick"></div></div>
         <div class="cl-text">Passport</div>
-      </div>
-      <div class="cl-item" onclick="toggleCheck(this)">
+      </label>
+      <input type="checkbox" id="cl2" class="cl-input">
+      <label for="cl2" class="cl-item">
         <div class="cl-box"><div class="cl-tick"></div></div>
         <div class="cl-text">Suncream</div>
-      </div>
-      <div class="cl-item" onclick="toggleCheck(this)">
+      </label>
+      <input type="checkbox" id="cl3" class="cl-input">
+      <label for="cl3" class="cl-item">
         <div class="cl-box"><div class="cl-tick"></div></div>
         <div class="cl-text">Blanket for lake days</div>
-      </div>
-      <div class="cl-item" onclick="toggleCheck(this)">
+      </label>
+      <input type="checkbox" id="cl4" class="cl-input">
+      <label for="cl4" class="cl-item">
         <div class="cl-box"><div class="cl-tick"></div></div>
         <div class="cl-text">Golf attire &#x3B;&#x29;</div>
-      </div>
+      </label>
     </div>
 
     <div class="pass-base">
-      <div class="barcode" id="bc"></div>
+      <div class="barcode"><div class="bar" style="width:2px;height:26px"></div><div class="bar" style="width:3px;height:18px"></div><div class="bar" style="width:2px;height:28px"></div><div class="bar" style="width:4px;height:14px"></div><div class="bar" style="width:2px;height:22px"></div><div class="bar" style="width:2px;height:30px"></div><div class="bar" style="width:3px;height:16px"></div><div class="bar" style="width:4px;height:24px"></div><div class="bar" style="width:2px;height:20px"></div><div class="bar" style="width:3px;height:28px"></div><div class="bar" style="width:2px;height:18px"></div><div class="bar" style="width:2px;height:24px"></div><div class="bar" style="width:4px;height:30px"></div><div class="bar" style="width:3px;height:16px"></div><div class="bar" style="width:2px;height:26px"></div><div class="bar" style="width:2px;height:20px"></div><div class="bar" style="width:3px;height:22px"></div><div class="bar" style="width:2px;height:18px"></div><div class="bar" style="width:4px;height:28px"></div><div class="bar" style="width:2px;height:22px"></div><div class="bar" style="width:3px;height:16px"></div><div class="bar" style="width:2px;height:30px"></div><div class="bar" style="width:2px;height:24px"></div><div class="bar" style="width:3px;height:18px"></div><div class="bar" style="width:4px;height:22px"></div><div class="bar" style="width:2px;height:28px"></div><div class="bar" style="width:3px;height:16px"></div><div class="bar" style="width:2px;height:24px"></div><div class="bar" style="width:2px;height:30px"></div><div class="bar" style="width:4px;height:18px"></div><div class="bar" style="width:2px;height:22px"></div><div class="bar" style="width:3px;height:28px"></div><div class="bar" style="width:2px;height:20px"></div></div>
       <div style="display:flex;flex-direction:column;align-items:flex-end;gap:6px">
         <div class="base-ref">SC &middot; CM &middot; ANC26</div>
         <div class="base-year">Summer 2026</div>
       </div>
-      <div class="stamp-wrap" onclick="this.classList.toggle('flipped')" title="Tap me">
+      <input type="checkbox" id="stamp-cb" class="stamp-input">
+      <label for="stamp-cb" class="stamp-wrap" title="Tap me">
         <div class="stamp-inner">
           <div class="stamp-face">
             <div class="stamp-top">Confirmed</div>
@@ -358,7 +363,7 @@ body{display:flex;align-items:center;justify-content:center;padding:40px 20px;mi
             <div class="stamp-msg">I love you, I can&rsquo;t wait to be away with you again</div>
           </div>
         </div>
-      </div>
+      </label>
     </div>
 
   </div>
@@ -424,34 +429,5 @@ body{display:flex;align-items:center;justify-content:center;padding:40px 20px;mi
 <div style="position:absolute;top:-30px;left:93.3%;font-size:17.3px;color:#c9a84c;opacity:0;animation:hfR 5.64s ease-in 3.52s forwards">&#9829;&#xFE0E;</div>
 <div style="position:absolute;top:-30px;left:70.4%;font-size:28.7px;color:#c9a84c;opacity:0;animation:hfRR 5.96s ease-in 2.45s forwards">&#9829;&#xFE0E;</div>
 </div>
-<script>
-// countdown
-function updateCountdown(){
-  var dep=new Date('2026-06-22T08:55:00+01:00');
-  var now=new Date();
-  var diff=dep-now;
-  if(diff<=0){document.querySelector('.countdown').innerHTML='<div class="cd-label">Bon voyage!</div>';return;}
-  var d=Math.floor(diff/86400000);
-  var h=Math.floor((diff%86400000)/3600000);
-  var m=Math.floor((diff%3600000)/60000);
-  document.getElementById('cd-d').textContent=d;
-  document.getElementById('cd-h').textContent=String(h).padStart(2,'0');
-  document.getElementById('cd-m').textContent=String(m).padStart(2,'0');
-}
-updateCountdown();
-setInterval(updateCountdown,30000);
-
-// checklist
-function toggleCheck(el){el.classList.toggle('checked');}
-
-// barcode
-[2,3,2,4,2,2,3,4,2,3,2,2,4,3,2,2,3,2,4,2,3,2,2,3,4,2,3,2,2,4,2,3,2].forEach(w=>{
-  const b=document.createElement('div');
-  b.className='bar';
-  b.style.width=w+'px';
-  b.style.height=(14+Math.random()*18)+'px';
-  document.getElementById('bc').appendChild(b);
-});
-</script>
 </body>
 </html>
