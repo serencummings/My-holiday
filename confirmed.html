@@ -127,12 +127,7 @@ body{display:flex;align-items:center;justify-content:center;padding:40px 20px;mi
   color:var(--green);font-weight:500;white-space:nowrap;
 }
 
-.headline{
-  font-family:'Cormorant Garamond',serif;
-  font-size:2.9rem;font-weight:300;
-  color:var(--green-deep);line-height:1.05;margin-bottom:8px;
-}
-.headline em{font-style:italic;color:var(--green)}
+.headline{display:block;width:100%;height:auto;overflow:visible;margin-bottom:8px}
 .subline{
   font-family:'Cormorant Garamond',serif;
   font-style:italic;font-size:.98rem;font-weight:300;
@@ -264,7 +259,10 @@ body{display:flex;align-items:center;justify-content:center;padding:40px 20px;mi
       <div class="mark-line"></div>
     </div>
 
-    <div class="headline">We are<br><em>going.</em></div>
+    <svg class="headline" viewBox="0 0 300 130" xmlns="http://www.w3.org/2000/svg">
+      <text y="55" textLength="300" lengthAdjust="spacing" style="font-family:'Cormorant Garamond',Georgia,serif;font-weight:300;font-size:54px;fill:#004a2d">We are</text>
+      <text y="116" textLength="300" lengthAdjust="spacing" style="font-family:'Cormorant Garamond',Georgia,serif;font-style:italic;font-weight:300;font-size:54px;fill:#00603a">going.</text>
+    </svg>
     <p class="subline">The flights are booked.<br>The villa awaits.</p>
 
 
@@ -310,7 +308,7 @@ body{display:flex;align-items:center;justify-content:center;padding:40px 20px;mi
     </div>
 
     <div class="checklist">
-      <div class="cl-title">Packing List</div>
+      <div class="cl-title">Interactive Check List</div>
       <div class="cl-hint">Tap each item to check off</div>
       <input type="checkbox" id="cl1" class="cl-input">
       <label for="cl1" class="cl-item">
