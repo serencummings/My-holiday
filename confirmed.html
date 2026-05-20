@@ -246,11 +246,6 @@ body{display:flex;align-items:center;justify-content:center;padding:40px 20px;mi
     <a href="mailto:seren.cummings@me.com?subject=I%20cannot%20wait%20%E2%99%A1" style="display:block;background:#00603a;color:#fff;font-family:'Cormorant Garamond',serif;font-size:1.05rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;text-align:center;text-decoration:none;padding:16px 32px;margin-bottom:32px">
       Write to Seren
     </a>
-    <div style="display:flex;gap:10px;margin-bottom:32px">
-      <a href="#" onclick="addToCalendar();return false;" style="display:block;flex:1;background:#004a2d;color:#c9a84c;font-family:'Cormorant Garamond',serif;font-size:.95rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;text-align:center;text-decoration:none;padding:14px 16px">
-        Add Flights to Calendar
-      </a>
-    </div>
     <div class="items">
       <div class="item">
         <div class="item-marker"><div class="dot"></div><div class="stem"></div></div>
@@ -361,42 +356,6 @@ body{display:flex;align-items:center;justify-content:center;padding:40px 20px;mi
   b.style.height=(14+Math.random()*18)+'px';
   document.getElementById('bc').appendChild(b);
 });
-
-function addToCalendar(){
-  var ics = `BEGIN:VCALENDAR
-VERSION:2.0
-PRODID:-//Seren Cummings//Annecy 2026//EN
-CALSCALE:GREGORIAN
-METHOD:PUBLISH
-BEGIN:VEVENT
-UID:annecy-outbound-2026@seren
-SUMMARY:LHR to GVA - Annecy Holiday
-DTSTART;TZID=Europe/London:20260622T085500
-DTEND;TZID=Europe/Zurich:20260622T113500
-LOCATION:London Heathrow Terminal 2
-DESCRIPTION:Flight LX353 - LHR T2 to GVA T1 - Nonstop
-STATUS:CONFIRMED
-END:VEVENT
-BEGIN:VEVENT
-UID:annecy-return-2026@seren
-SUMMARY:GVA to LHR - Annecy Holiday
-DTSTART;TZID=Europe/Zurich:20260628T175000
-DTEND;TZID=Europe/London:20260628T183000
-LOCATION:Geneva Airport Terminal 1
-DESCRIPTION:Flight LX356 - GVA T1 to LHR T2 - Nonstop
-STATUS:CONFIRMED
-END:VEVENT
-END:VCALENDAR`;
-  var blob = new Blob([ics], {type:'text/calendar;charset=utf-8'});
-  var url  = URL.createObjectURL(blob);
-  var a    = document.createElement('a');
-  a.href   = url;
-  a.download = 'annecy-flights.ics';
-  document.body.appendChild(a);
-  a.click();
-  document.body.removeChild(a);
-  setTimeout(function(){URL.revokeObjectURL(url);}, 1000);
-}
 </script>
 </body>
 </html>
